@@ -1,25 +1,43 @@
 var choice;
-var clothingB, foodB, bookB, hairB, furnitureB = true;
+var clothingB, foodB, bookB, furnitureB = true;
 var map = document.getElementById("map");
 var markerAr = [];
 var numMarkers = 0;
+var autocomplete;
+var locName;
+var locPos;
 
 $(document).ready(function(){
-    
+
     $("#ClothingButton").click(function(){
         
         var b = document.getElementById("ClothingButton");
         
+        var location = document.getElementById("location");
+    
+        locName = location.value;
+    
+        var request = {
+            query: locName,
+            fields: ['name', 'geometry'],
+        };
+    
+        var service = new google.maps.places.PlacesService(map);
+
+        service.findPlaceFromQuery(request, function(results, status) {
+            if (status == google.maps.places.PlacesServiceStatus.OK) {
+                locPos = results[0].geometry.location;
+            }
+        });
+
         if (clothingB) {
             
             b.style.backgroundColor = "red";
             
             choice = "clothing donation near me";
-            
-            var Davis = new google.maps.LatLng(38.5382,-121.7617);
-            
+                        
             var request = {
-                location: Davis,
+                location: locPos,
                 radius: 1,
                 query: choice
             };
@@ -27,8 +45,8 @@ $(document).ready(function(){
             service = new google.maps.places.PlacesService(map);
             service.textSearch(request, callback);
             
-            map.setCenter(Davis);
-            map.setZoom(10);
+            map.setCenter(locPos);  
+            map.setZoom(9);
 
     
             clothingB = false;
@@ -52,17 +70,32 @@ $(document).ready(function(){
     $("#FoodButton").click(function(){
 
         var b = document.getElementById("FoodButton");
+
+        var location = document.getElementById("location");
+    
+        locName = location.value;
+    
+        var request = {
+            query: locName,
+            fields: ['name', 'geometry'],
+        };
+    
+        var service = new google.maps.places.PlacesService(map);
+
+        service.findPlaceFromQuery(request, function(results, status) {
+            if (status == google.maps.places.PlacesServiceStatus.OK) {
+                locPos = results[0].geometry.location;
+            }
+        });        
         
         if (foodB) {
             
             b.style.backgroundColor = "red";
             
             choice = "food donation near me";
-            
-            var Davis = new google.maps.LatLng(38.5382,-121.7617);
-            
+                        
             var request = {
-                location: Davis,
+                location: locPos,
                 radius: 1,
                 query: choice
             };
@@ -70,8 +103,8 @@ $(document).ready(function(){
             service = new google.maps.places.PlacesService(map);
             service.textSearch(request, callback);
             
-            map.setCenter(Davis);
-            map.setZoom(10);
+            map.setCenter(locPos);
+            map.setZoom(9);
 
     
             foodB = false;
@@ -96,17 +129,32 @@ $(document).ready(function(){
     $("#BookButton").click(function(){
 
         var b = document.getElementById("BookButton");
+ 
+        var location = document.getElementById("location");
+    
+        locName = location.value;
+    
+        var request = {
+            query: locName,
+            fields: ['name', 'geometry'],
+        };
+    
+        var service = new google.maps.places.PlacesService(map);
+
+        service.findPlaceFromQuery(request, function(results, status) {
+            if (status == google.maps.places.PlacesServiceStatus.OK) {
+                locPos = results[0].geometry.location;
+            }
+        });        
         
         if (bookB) {
             
             b.style.backgroundColor = "red";
             
             choice = "book donation near me";
-            
-            var Davis = new google.maps.LatLng(38.5382,-121.7617);
-            
+                        
             var request = {
-                location: Davis,
+                location: locPos,
                 radius: 1,
                 query: choice
             };
@@ -114,8 +162,8 @@ $(document).ready(function(){
             service = new google.maps.places.PlacesService(map);
             service.textSearch(request, callback);
             
-            map.setCenter(Davis);
-            map.setZoom(10);
+            map.setCenter(locPos);
+            map.setZoom(9);
 
     
             bookB = false;
@@ -136,68 +184,37 @@ $(document).ready(function(){
         
         
     });
-    
-    $("#HairButton").click(function(){
-
-
-        var b = document.getElementById("HairButton");
-        
-        if (hairB) {
-            
-            b.style.backgroundColor = "red";
-            
-            choice = "hair donation near me";
-            
-            var Davis = new google.maps.LatLng(38.5382,-121.7617);
-            
-            var request = {
-                location: Davis,
-                radius: 1,
-                query: choice
-            };
-
-            service = new google.maps.places.PlacesService(map);
-            service.textSearch(request, callback);
-            
-            map.setCenter(Davis);
-            map.setZoom(10);
-
-    
-            hairB = false;
-        } else {
-            choice = "";
-            
-            while (numMarkers > 0) {
-                numMarkers--;   
-                markerAr[numMarkers].setMap(null);
-                markerAr[numMarkers] = null;
-                markerAr.pop();
-            }
-            
-            hairB = true;
-            b.style.backgroundColor = "";
-
-        }
-        
-     
-    });
-    
+   
     
     $("#FurnitureButton").click(function(){
 
-
         var b = document.getElementById("FurnitureButton");
+
+        var location = document.getElementById("location");
+    
+        locName = location.value;
+    
+        var request = {
+            query: locName,
+            fields: ['name', 'geometry'],
+        };
+    
+        var service = new google.maps.places.PlacesService(map);
+
+        service.findPlaceFromQuery(request, function(results, status) {
+            if (status == google.maps.places.PlacesServiceStatus.OK) {
+                locPos = results[0].geometry.location;
+            }
+        });        
         
         if (furnitureB) {
             
             b.style.backgroundColor = "red";
             
             choice = "furniture donation near me";
-            
-            var Davis = new google.maps.LatLng(38.5382,-121.7617);
-            
+                        
             var request = {
-                location: Davis,
+                location: locPos,
                 radius: 1,
                 query: choice
             };
@@ -205,8 +222,8 @@ $(document).ready(function(){
             service = new google.maps.places.PlacesService(map);
             service.textSearch(request, callback);
             
-            map.setCenter(Davis);
-            map.setZoom(10);
+            map.setCenter(locPos);
+            map.setZoom(9);
 
     
             furnitureB = false;

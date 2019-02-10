@@ -17,7 +17,8 @@ body {
 #map {
     height: 80%;
     width: 50%;
-    align-items: center;
+    margin-right: auto;
+    margin-left: auto;
 }
 
 /* Optional: Makes the sample page fill the window. */
@@ -28,3 +29,7 @@ html, body {
     padding: 0;
 }
 
+#location {
+    height: 25pt;
+    width: 300pt;
+}
