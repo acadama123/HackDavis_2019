@@ -1,13 +1,13 @@
 #prompt {
-    
-    color: coral;
+
     font-size: 20;
     
     
 }
 
 body {
-    
+    background-image: url(perry-grone-732606-unsplash.jpg);
+    background-size: 100% auto;
     background-color: bisque;
     
 }

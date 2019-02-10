@@ -32,7 +32,7 @@ $(document).ready(function(){
 
         if (clothingB) {
             
-            b.style.backgroundColor = "red";
+            b.style.backgroundColor = "coral";
             
             choice = "clothing donation near me";
                         
@@ -90,7 +90,7 @@ $(document).ready(function(){
         
         if (foodB) {
             
-            b.style.backgroundColor = "red";
+            b.style.backgroundColor = "coral";
             
             choice = "food donation near me";
                         
@@ -149,7 +149,7 @@ $(document).ready(function(){
         
         if (bookB) {
             
-            b.style.backgroundColor = "red";
+            b.style.backgroundColor = "coral";
             
             choice = "book donation near me";
                         
@@ -209,7 +209,7 @@ $(document).ready(function(){
         
         if (furnitureB) {
             
-            b.style.backgroundColor = "red";
+            b.style.backgroundColor = "coral";
             
             choice = "furniture donation near me";
                         
